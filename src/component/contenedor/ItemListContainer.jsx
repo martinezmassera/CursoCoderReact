@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const ItemListContainer = () => {
+function ItemListContainer() {
+  const [count, setCount] = useState(1);
   return (
     <div>
-    <h1>Nuevos Productos en Tienda</h1>
+
+
+      <button onClick={() => setCount(count - 1)}>
+      -
+      </button>
+      <input value={count} />
+      <button onClick={() => setCount(count + 1)}>
+        +
+      </button>
     </div>
-  )
+  );
 }
+
 
 export default ItemListContainer
