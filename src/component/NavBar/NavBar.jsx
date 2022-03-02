@@ -16,7 +16,7 @@ const NavBar = () => {
                             src="/image/logo/logo.png"
                             width="80"
                             height="80"
-                            alt="React Bootstrap logo"
+                            alt="Logo"
                         /></Navbar.Brand>
                     <Nav>
                         <Nav.Link href="#home">Home</Nav.Link>
