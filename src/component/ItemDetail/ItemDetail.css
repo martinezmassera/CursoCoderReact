@@ -1,19 +1,43 @@
-.btnDetalle{
-        border-radius: 28px;
-        font-family: Arial;
-        color: #878787;
-        font-size: 18px;
-        background: transparent;
-        padding: 10px 20px 10px 20px;
-        border: solid #878787 2px;
-        text-decoration: none;
-      }
-      
-      .btnDetalle:hover {
-        background: #b4b7b8;
-        text-decoration: none;
-        color:#fff;
-      }
-.Contador{
-    margin-top:1rem;
+.btnDetalle {
+  border-radius: 28px;
+  font-family: Arial;
+  color: #878787;
+  font-size: 18px;
+  background: transparent;
+  padding: 10px 20px 10px 20px;
+  border: solid #878787 2px;
+  text-decoration: none;
+}
+
+.btnDetalle:hover {
+  background: #b4b7b8;
+  text-decoration: none;
+  color: #fff;
+}
+
+.Contador {
+  margin-top: 1rem;
+}
+
+.textoDetalle {
+  display: flex;
+  align-items: center;
+}
+
+.img-responsive {
+  width: 50%;
+  height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+
+.detalleProducto{
+  flex-direction: column;
+}
+
+.img-responsive {
+  width: 80%;
+  height: auto;
+}
+
 }
