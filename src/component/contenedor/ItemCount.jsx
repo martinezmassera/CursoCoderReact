@@ -21,7 +21,7 @@ const ItemCount = ({ initial, stock }) => {
 
       
     return (
-        <div> 
+        <div className="Contador"> 
             <Button variant="outline-secondary" onClick={restauno}> - </Button>
             <label className="cantidadAgregar"> {count} </label>
             <Button variant="outline-secondary" onClick={sumauno}> + </Button>

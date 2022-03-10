@@ -1,11 +1,13 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import ItemCount from '../contenedor/ItemCount';
+import '../ItemDetail/ItemDetail.css'
+
 
 function Item({prod}) {
   return (
   <div
-    key={prod.id}
     className='col m-2'
   >
     <Card >
@@ -15,6 +17,7 @@ function Item({prod}) {
         <Card.Text>
           <strong>$ {prod.price}</strong>
         </Card.Text>
+        <Link className="btnDetalle"  to={`../detalle/${prod.id}`}>Detalle</Link>
         <ItemCount initial = {1} stock = {prod.stock}/>
         </Card.Body>
     </Card>

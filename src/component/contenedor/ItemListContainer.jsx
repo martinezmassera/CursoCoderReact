@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import prodList from '../../helpers/productos';
 import Preload from '../Items/preload';
 import ItemList from '../Items/ItemList'
@@ -9,14 +10,22 @@ import './ItemListContainer.css';
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
+  const{catProducto} = useParams()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    prodList
-      .then((resp) => setProductos(resp))
+    if (catProducto) {
+      prodList
+      .then(resp => setProductos(resp.filter(prod => prod.tipo === catProducto)))
       .catch(err => console.log(err))
       .finally(() => setLoading(false))
-  }, [])
+      } else {   
+      prodList
+        .then((resp) => setProductos(resp))
+        .catch(err => console.log(err))
+        .finally(() => setLoading(false))
+    }
+  },[catProducto])
 
   console.log(productos)
 
