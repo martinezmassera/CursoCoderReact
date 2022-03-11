@@ -15,12 +15,12 @@ const NavBar = () => {
             <Navbar bg="light" variant="light">
                 <Container className='Nav'>
                     <Navbar.Brand to="/">
-                        <img
+                    <NavLink className="nav-link" to="/">  <img
                             src="/image/logo/logo.png"
                             width="80"
                             height="80"
                             alt="Logo"
-                        /></Navbar.Brand>
+                        /></NavLink></Navbar.Brand>
                     <Nav>
                         
                         <NavLink className="nav-link" to="/">Home</NavLink>
