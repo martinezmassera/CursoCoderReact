@@ -1,6 +1,6 @@
 export const productos = [{
     "id": '1',
-    "title": "comida1",
+    "title": "comida1-vegetariana",
     "price": 150,
     "stock": 15,
     "pictureUrl": "../image/productos/camarones.jpg",
@@ -9,7 +9,7 @@ export const productos = [{
 },
 {
     "id": '2',
-    "title": "comida2",
+    "title": "comida2-vegetariana",
     "price": 125,
     "stock": 25,
     "pictureUrl": "../image/productos/ensalada_palta.jpg",
@@ -18,7 +18,7 @@ export const productos = [{
 },
 {
     "id": '3',
-    "title": "comida3",
+    "title": "comida3-vegetariana",
     "price": 175,
     "stock": 25,
     "pictureUrl": "../image/productos/ensalada.jpg",
@@ -27,7 +27,7 @@ export const productos = [{
 },
 {
     "id": '4',
-    "title": "comida4",
+    "title": "comida4-vegetariana",
     "price": 182,
     "stock": 25,
     "pictureUrl": "../image/productos/pastas.jpg",
@@ -36,7 +36,7 @@ export const productos = [{
 },
 {
     "id": '5',
-    "title": "comida5",
+    "title": "comida5-vegetariana",
     "price": 188,
     "stock": 25,
     "pictureUrl": "../image/productos/polo.jpg",
@@ -45,7 +45,7 @@ export const productos = [{
 },
 {
     "id": '6',
-    "title": "comida6",
+    "title": "comida6-vegetariana",
     "price": 200,
     "stock": 12,
     "pictureUrl": "../image/productos/sandwich.jpg",
@@ -54,7 +54,7 @@ export const productos = [{
 },
 {
     "id": '7',
-    "title": "comida7",
+    "title": "comida7-con carne",
     "price": 2850,
     "stock": 1,
     "pictureUrl": "../image/productos/torta.jpg",
@@ -63,7 +63,7 @@ export const productos = [{
 },
 {
     "id": '8',
-    "title": "comida8",
+    "title": "comida8-vegano",
     "price": 250,
     "stock": 22,
     "pictureUrl": "../image/productos/polo.jpg",
@@ -72,7 +72,7 @@ export const productos = [{
 },
 {
     "id": '9',
-    "title": "comida9",
+    "title": "comida9-pastas",
     "price": 1350,
     "stock": 40,
     "pictureUrl": "../image/productos/pastas.jpg",
@@ -81,7 +81,7 @@ export const productos = [{
 },
 {
     "id": '10',
-    "title": "comida10",
+    "title": "comida10-pastas",
     "price": 1585,
     "stock": 55,
     "pictureUrl": "../image/productos/camarones.jpg",
