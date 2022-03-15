@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import ItemCount from '../contenedor/ItemCount';
 import '../ItemDetail/ItemDetail.css'
 
+function onClick(evt){
+  evt.stopPropagation();
+}
 
 function Item({prod}) {
   return (
@@ -17,7 +20,7 @@ function Item({prod}) {
         <Card.Text>
           <strong>$ {prod.price}</strong>
         </Card.Text>
-        <Link className="btnDetalle"  to={`../detalle/${prod.id}`}>Detalle</Link>
+        <Link className="btnDetalle"  onClick={ onClick } to={`../detalle/${prod.id}`}>Detalle</Link>
         <ItemCount initial = {1} stock = {prod.stock}/>
         </Card.Body>
     </Card>
