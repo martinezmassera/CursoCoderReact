@@ -1,7 +1,6 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import ItemCount from '../contenedor/ItemCount';
 import '../ItemDetail/ItemDetail.css'
 
 function onClick(evt){
@@ -21,7 +20,6 @@ function Item({prod}) {
           <strong>$ {prod.price}</strong>
         </Card.Text>
         <Link className="btnDetalle"  onClick={ onClick } to={`../detalle/${prod.id}`}>Detalle</Link>
-        <ItemCount initial = {1} stock = {prod.stock}/>
         </Card.Body>
     </Card>
   </div>

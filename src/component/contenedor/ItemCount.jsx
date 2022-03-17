@@ -1,10 +1,10 @@
-import React from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Imagen from '../CartWidget/CartWidget';
 
-const ItemCount = ({ initial, stock }) => {
+const ItemCount = ({ initial, stock, onAdd }) => {
     const [count, setCount] = useState(initial)
+    
     const sumauno = () => {
         if (count < stock) {
           setCount(count + 1)
@@ -15,17 +15,19 @@ const ItemCount = ({ initial, stock }) => {
           setCount(count - 1)
         }
       }
-    
+ 
       const agregar = () => {
-      }
+        onAdd(count)
+        console.log( count )
+    }
 
-      
+
     return (
         <div className="Contador"> 
             <Button variant="outline-secondary" onClick={restauno}> - </Button>
             <label className="cantidadAgregar"> {count} </label>
             <Button variant="outline-secondary" onClick={sumauno}> + </Button>
-            <Button variant="outline-secondary" onClick={agregar}> <Imagen /></Button>
+            <Button variant="outline-secondary" onClick={ agregar }> <Imagen /></Button>
             </div>
     )
 }
