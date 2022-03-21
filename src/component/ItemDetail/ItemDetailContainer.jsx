@@ -4,6 +4,8 @@ import prodList from '../../helpers/productos';
 import Preload from '../Items/preload'
 import { useParams } from 'react-router-dom';
 
+
+
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState({});
     const{idProducto} = useParams()
@@ -16,7 +18,7 @@ const ItemDetailContainer = () => {
             .finally(() => setLoading(false))
 
     })
-    console.log(product)
+  
     return (
         <>
 

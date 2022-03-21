@@ -27,7 +27,6 @@ const ItemListContainer = () => {
     }
   },[catProducto])
 
-  console.log(productos)
 
 
   return (

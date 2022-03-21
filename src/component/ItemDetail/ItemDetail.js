@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/cartContext";
 import ItemCount from "../contenedor/ItemCount";
 
 
@@ -8,10 +9,14 @@ import ItemCount from "../contenedor/ItemCount";
 const ItemDetail = ({product}) => {
 
   const[count, setCount] = useState (null)
-  
+ 
+const{ agregarAlCarrito } = useCartContext()
+
   const onAdd = cant =>{
     setCount(cant)
+    agregarAlCarrito({...product, cantidad: cant})
   }
+
 
   return(
 <div className="row detalleProducto">

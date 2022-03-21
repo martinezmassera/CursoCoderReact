@@ -3,9 +3,9 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import '../ItemDetail/ItemDetail.css'
 
-function onClick(evt){
-  evt.stopPropagation();
-}
+const onClick =(event)=>{
+  event.stopPropagation();
+  }
 
 function Item({prod}) {
   return (
@@ -19,7 +19,7 @@ function Item({prod}) {
         <Card.Text>
           <strong>$ {prod.price}</strong>
         </Card.Text>
-        <Link className="btnDetalle"  onClick={ onClick } to={`../detalle/${prod.id}`}>Detalle</Link>
+        <Link className="btnDetalle" onClick={onClick} to={`../detalle/${prod.id}`}>Detalle</Link>
         </Card.Body>
     </Card>
   </div>
