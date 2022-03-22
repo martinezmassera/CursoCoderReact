@@ -34,7 +34,7 @@ return (
                 </div>
                 <div className="col-md-4">
                 {cartList.length === 0 ? <Link to='/'>
-        <Button variant="success">Volver a Comprar</Button></Link>
+                <Button variant="success">Volver a Comprar</Button></Link>
               :
                <Button variant="danger" onClick={limpiarCart}>VaciarCarrto</Button>
              }

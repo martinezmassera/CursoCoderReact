@@ -19,7 +19,8 @@ const{ agregarAlCarrito } = useCartContext()
 
 
   return(
-<div className="row detalleProducto">
+
+  <div className="row detalleProducto">
   <div className="col">
       <div className="container">
           <h3>{product.title}</h3>
@@ -29,9 +30,18 @@ const{ agregarAlCarrito } = useCartContext()
   <div className="col textoDetalle">
       <div className="container">
       <p>{product.detalle}</p>
-      {count ?
+      {count ?      
+      <div className="container botones">
+      <div className="btnCartSeguir">
+        <Link to='/'>
+        <Button>Seguir Comprando</Button>
+        </Link>
+      </div>
+      <div className="btnCartSeguir">
        <Link to='/cart'>
-        <Button>Ir al Carro</Button></Link>
+       <Button>Ir al Carro</Button></Link>
+      </div>
+      </div>
         :
        
       <ItemCount initial = {1} stock = {product.stock} onAdd={onAdd} />
@@ -39,6 +49,7 @@ const{ agregarAlCarrito } = useCartContext()
       </div>
   </div>
 </div>
+
   )
 }
 
