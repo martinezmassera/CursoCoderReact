@@ -6,49 +6,49 @@ import ItemCount from "../contenedor/ItemCount";
 
 
 
-const ItemDetail = ({product}) => {
+const ItemDetail = ({ product }) => {
 
-  const[count, setCount] = useState (null)
- 
-const{ agregarAlCarrito } = useCartContext()
+  const [count, setCount] = useState(null)
 
-  const onAdd = cant =>{
+  const { agregarAlCarrito } = useCartContext()
+
+  const onAdd = cant => {
     setCount(cant)
-    agregarAlCarrito({...product, cantidad: cant})
+    agregarAlCarrito({ ...product, cantidad: cant })
   }
 
 
-  return(
+  return (
 
-  <div className="row detalleProducto">
-  <div className="col">
-      <div className="container">
+    <div className="row detalleProducto">
+      <div className="col">
+        <div className="container">
           <h3>{product.title}</h3>
-          <img className="img-responsive" src={product.pictureUrl} alt='Foto'/>
+          <img className="img-responsive" src={product.pictureUrl} alt='Foto' />
+        </div>
       </div>
-  </div>
-  <div className="col textoDetalle">
-      <div className="container">
-      <p>{product.detalle}</p>
-      {count ?      
-      <div className="container botones">
-      <div className="btnCartSeguir">
-        <Link to='/'>
-        <Button>Seguir Comprando</Button>
-        </Link>
+      <div className="col textoDetalle">
+        <div className="container">
+          <p>{product.detalle}</p>
+          {count ?
+            <div className="container botones">
+              <div className="btnCartSeguir">
+                <Link to='/'>
+                  <Button>Seguir Comprando</Button>
+                </Link>
+              </div>
+              <div className="btnCartSeguir">
+                <Link to='/cart'>
+                  <Button>Ir al Carro</Button></Link>
+              </div>
+            </div>
+            :
+
+            <ItemCount initial={1} stock={product.stock} onAdd={onAdd} />
+          }
+        </div>
       </div>
-      <div className="btnCartSeguir">
-       <Link to='/cart'>
-       <Button>Ir al Carro</Button></Link>
-      </div>
-      </div>
-        :
-       
-      <ItemCount initial = {1} stock = {product.stock} onAdd={onAdd} />
-      }
-      </div>
-  </div>
-</div>
+    </div>
 
   )
 }

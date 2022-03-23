@@ -1,24 +1,28 @@
 import { useEffect, useState } from 'react';
 import ItemDetail from './ItemDetail';
-import prodList from '../../helpers/productos';
 import Preload from '../Items/preload'
+import {getFirestore, getDoc, doc}  from "firebase/firestore"
 import { useParams } from 'react-router-dom';
 
 
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState({});
-    const{idProducto} = useParams()
+    const { idProducto } = useParams()
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        prodList
-            .then(resp => setProduct(resp.find(prod => prod.id === idProducto)))
-            .catch(err => console.log(err))
-            .finally(() => setLoading(false))
 
-    })
-  
+    useEffect(() => {
+        const db = getFirestore()
+        const queryDetalle = doc(db, 'items', idProducto)   
+        
+        getDoc(queryDetalle)
+        .then(resp => setProduct(  { id: resp.id, ...resp.data()} ))
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false))            
+       
+    }, [idProducto])
+
     return (
         <>
 

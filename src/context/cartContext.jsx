@@ -13,26 +13,31 @@ function CartContextProvider({ children }) {
             setCartList([...cartList, item])
         } else {
             const cant = cartList[index].cantidad
-            cartList[index].cantidad = item.cantidad + cant 
-            const newCartList = [ ...cartList ]
+            cartList[index].cantidad = item.cantidad + cant
+            const newCartList = [...cartList]
             setCartList(newCartList)
         }
     }
-    const limpiarCart=()=>{
+    const limpiarCart = () => {
         setCartList([])
     }
 
-    const clearProd = (id) => { 
-        setCartList( cartList.filter( prod => prod.id !== id ) )
+    const clearProd = (id) => {
+        setCartList(cartList.filter(prod => prod.id !== id))
     }
 
+    const productosTotal = () => {
+        return cartList.reduce((acumulado, cartList) => acumulado + cartList.cantidad, 0)
+
+    }
 
     return (
         <cartContext.Provider value={{
             cartList,
             agregarAlCarrito,
             limpiarCart,
-            clearProd
+            clearProd,
+            productosTotal
         }}>
             {children}
         </cartContext.Provider>

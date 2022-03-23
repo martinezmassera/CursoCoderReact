@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import prodList from '../../helpers/productos';
 import Preload from '../Items/preload';
 import ItemList from '../Items/ItemList'
 import Container from 'react-bootstrap/Container';
+import {collection, getFirestore, getDocs, query, where}  from "firebase/firestore"
 import './ItemListContainer.css';
 
 
@@ -14,18 +14,18 @@ const ItemListContainer = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (catProducto) {
-      prodList
-      .then(resp => setProductos(resp.filter(prod => prod.tipo === catProducto)))
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false))
-      } else {   
-      prodList
-        .then((resp) => setProductos(resp))
-        .catch(err => console.log(err))
-        .finally(() => setLoading(false))
-    }
-  },[catProducto])
+    const db = getFirestore()
+    const queryCollection = collection(db, 'items')   
+    const queryFilter = !catProducto ?
+    queryCollection
+    :
+    query(queryCollection, where('tipo', '==', catProducto))
+    getDocs(queryFilter)
+    .then(resp => setProductos( resp.docs.map(prod => ( { id: prod.id, ...prod.data() } )  ) ))
+    .catch((err) => console.log(err))
+    .finally(() => setLoading(false))            
+               
+}, [catProducto])
 
 
 
