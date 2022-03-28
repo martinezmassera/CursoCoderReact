@@ -1,11 +1,13 @@
 import { createContext, useContext, useState } from 'react'
 
+
 const cartContext = createContext();
 
 export const useCartContext = () => useContext(cartContext)
 
 function CartContextProvider({ children }) {
     const [cartList, setCartList] = useState([])
+
 
     const agregarAlCarrito = (item) => {
         const index = cartList.map(prod => prod.id).indexOf(item.id)
@@ -18,6 +20,7 @@ function CartContextProvider({ children }) {
             setCartList(newCartList)
         }
     }
+
     const limpiarCart = () => {
         setCartList([])
     }
@@ -31,13 +34,22 @@ function CartContextProvider({ children }) {
 
     }
 
+    const sumaTotal = () => {
+        return cartList.reduce((acumulado, cartList) => acumulado + (cartList.cantidad * cartList.price), 0)
+
+    }
+
+
+    
+
     return (
         <cartContext.Provider value={{
             cartList,
             agregarAlCarrito,
             limpiarCart,
             clearProd,
-            productosTotal
+            productosTotal,
+            sumaTotal
         }}>
             {children}
         </cartContext.Provider>

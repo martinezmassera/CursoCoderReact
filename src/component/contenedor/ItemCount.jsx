@@ -18,13 +18,13 @@ const ItemCount = ({ initial, stock, onAdd }) => {
 
   const agregar = () => {
     onAdd(count)
-  }
 
+  }
 
   return (
     <div className="Contador">
       <Button variant="outline-secondary" onClick={restauno}> - </Button>
-      <label className="cantidadAgregar"> {count} </label>
+      <label className="cantidadAgregar">{count}</label>
       <Button variant="outline-secondary" onClick={sumauno}> + </Button>
       <Button variant="outline-secondary" onClick={agregar}> <BsCart3 /></Button>
     </div>

@@ -1,15 +1,54 @@
-import { Button } from "react-bootstrap"
+import { Button, Form } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useCartContext } from "../../context/cartContext"
+import { addDoc, collection, getFirestore } from "firebase/firestore"
+import { useState } from "react"
 import './cart.css'
 
 const Cart = () => {
-    const { cartList, limpiarCart, clearProd } = useCartContext()
+    const { cartList, limpiarCart, clearProd, sumaTotal } = useCartContext()
+    const [dataForm, setDataForm] = useState({
+        mail: '',
+        telefono: '',
+        nombre: ''
+    })
+
+    const handleChange = (e) => {
+        setDataForm({
+            ...dataForm,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const GenerarCompra = (e) => {
+        e.preventDefault()
+
+        let compra = {}
+
+        compra.buyer = dataForm;
+        compra.total = sumaTotal();
+        compra.item = cartList.map(cartItem => {
+            const id = cartItem.id
+            const title = cartItem.title
+            const cantidad = cartItem.cantidad
+
+            return { id, title, cantidad }
+        })
+        const db = getFirestore()
+        const queryCollection = collection(db, 'compras')
+        addDoc(queryCollection, compra)
+            .then(resp => console.log(resp))
+            .catch(err => console.error(err))
+            .finally()
+
+        limpiarCart()
+    }
 
 
     return (
         <div>
-            <div className="container containerCart">
+            <div className="container-fluid containerCart">
+            
                 {cartList.length === 0 ?
                     <div className="row">
                         <div className="col-md-12" >
@@ -21,6 +60,9 @@ const Cart = () => {
                     :
                     <div className="row">
                         <div className="col-md-8" >
+
+
+
                             {cartList.map(item =>
                                 <div className="cart-item" key={item.id}>
                                     <div className="cart-item-imagen">
@@ -30,7 +72,7 @@ const Cart = () => {
                                         <p>{item.title}</p>
                                     </div>
                                     <div className="cart-item-cant">
-                                        <p>{item.cantidad}</p>
+                                        <label> {item.cantidad}</label>
                                     </div>
                                     <div className="cart-item-clear">
                                         <Button variant="danger" onClick={() => clearProd(item.id)}>x</Button>
@@ -40,9 +82,39 @@ const Cart = () => {
                             )
                             }
                         </div>
-                        <div className="col-md-4">
-                            <Button variant="danger" onClick={limpiarCart}>VaciarCarrto</Button>
-                            <Button variant="success">Terminar Compra</Button>
+                        <div className="col-md-4 checkOut" >
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Nombre</Form.Label>
+                                    <Form.Control type='text'
+                                        name='nombre'
+                                        placeholder='nombre'
+                                        onChange={handleChange}
+                                        value={dataForm.nombre} />
+                                    <Form.Label>Telefono/Celular</Form.Label>
+                                    <Form.Control type='number'
+                                        name='telefono'
+                                        placeholder='telefono'
+                                        onChange={handleChange}
+                                        value={dataForm.telefono} />
+                                    <Form.Label>Mail</Form.Label>
+                                    <Form.Control type='email'
+                                        name='mail'
+                                        placeholder='mail'
+                                        onChange={handleChange}
+                                        value={dataForm.mail} />
+                                </Form.Group>
+                                {dataForm.nombre === '' || dataForm.telefono === '' || dataForm.mail === '' ?
+                                    <p>Por Favor completar todos los datos para procesar la compra</p>
+                                    :
+                                    <Button variant="danger" onClick={GenerarCompra}>
+                                        Generar Compra
+                                    </Button>
+                                }
+                                <Button variant="danger" onClick={limpiarCart}>VaciarCarrto</Button>
+
+                            </Form>
+                            <p><strong>$ {sumaTotal()} </strong></p>
                         </div>
                     </div>
                 }
