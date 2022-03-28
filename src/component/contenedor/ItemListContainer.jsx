@@ -33,12 +33,12 @@ const ItemListContainer = () => {
     <>
       <div>
         <Container>
-          <div className='row row-cols-1 row-cols-lg-4 pb-5 justify-content-md-center' >
             {loading ? <Preload />
               :
+          <div className='row row-cols-1 row-cols-lg-4 pb-5 justify-content-md-center' >
               <ItemList productos={productos} />
-             }
            </div>
+             }
         </Container>
       </div>
     </>
