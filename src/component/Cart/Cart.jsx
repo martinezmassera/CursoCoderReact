@@ -120,10 +120,9 @@ const Cart = () => {
                         </div>
                     }
                 </div>
-
                 :
                 <div>
-                    {id !== '' && `El id de la orden es : ${id} `}
+                    {`Tu compra es: ${id} `}
                 </div>
             }
 
