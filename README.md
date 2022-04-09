@@ -7,6 +7,9 @@ Maximiliano Martinez Massera
 # Version actual
 Primera entrega proyecto final  v1
 
+# librerias
+
+
 # Available Scripts
 In the project directory, you can run:
 
